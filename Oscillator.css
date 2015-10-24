@@ -1,0 +1,79 @@
+#canvasOne   {
+   position : absolute;
+   top : 25em;
+   left : 5%;
+}
+   
+#form1  {
+   position : absolute;
+   top : 7em;
+   left : 3%;
+   height : 10em;
+   width : 18em;
+}
+
+input[type=text]  {
+   text-align : center;
+   position : absolute;
+   left : 11em;
+   width : 7em;
+}
+
+#p1  {
+   position : absolute;
+   top : 7em;
+   left : 55%;
+   width : 35%;
+   height : 35%;
+   font-size : 0.9em;
+   text-align : justify;
+   overflow : auto;
+}
+
+#p2  {
+   font-size : 1.4em;
+   width : 100%;
+   text-align : center;
+   color : blue;
+}
+
+#warning  {
+   position : absolute;
+   top : 14em;
+   font-size : 0.8em;
+   left : 54%;
+   width : 45%;
+}
+#stop  {
+   position : absolute;
+   top : 13.5em;
+   left : 30%;
+}
+
+#popout1   {           /*Popout invites user to change parameters.*/
+   visibility : hidden;
+   position : absolute;
+   opacity : 0.6;
+   right : -9.4em;
+   width : 55%;
+   top : 10%;
+   background-color : #FFFFFF;
+   padding-top : 0%;
+   padding-bottom : 5%;
+   border-radius : 20%;
+   font-size : 0.8em;
+   font-style : italic;
+   text-align : center;
+   color : black;
+   -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 2s, padding-bottom 2s, padding-top 3s;
+}
+
+#form1:hover #popout1   {
+   visibility : visible;
+   background-color : #00FFFF;
+   padding-bottom : 15%;
+   padding-top : 15%;
+}
+
+

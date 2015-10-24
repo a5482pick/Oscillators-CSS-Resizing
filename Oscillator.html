@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Two Oscillators</title>
+<link rel="stylesheet" type="text/css" href ="Oscillator.css" id="bigScreen">
+<link rel="stylesheet" type="text/css" href ="Oscillator2.css" id="smallScreen">
+<script type="text/javascript" src="checkSubmit.js"></script>
+<script type="text/javascript" src="eigenstate.js"></script>
+<script type="text/javascript" src="drawScreen.js"></script>
+<script type="text/javascript" src="canvasApp.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+</head>
+<body>
+
+<p id="p1">Press 'Start' to see the animation.  Spring k1 and mass m1 are on the left, spring k2 is in the middle,  and spring k3 and mass m2 are on the right.  The initial condition is for m1 to be displaced by a fixed amount, but with zero velocity.  
+Mass m2 begins at its equilibrium position with zero velocity.  The animation then shows the time-evolution of the system.  Change some of the parameters to see how the response of the system varies: higher values of k correspond to greater stiffness, larger values of m correspond to greater mass.  Values are limited to the interval [1,100] (this is enough to show the range of possible behaviours).  The canvas acts to constrain the viewing area: when the masses are very large, only parts of the masses are visible.  </p>
+
+<p id="p2"> A Simulation Of The Motion Of Two Masses And Three Springs.</p>
+
+<form id="form1"> 
+    <div id="util1">
+        Spring constant k1: <input id="k1" type="text" name="k1" value="1">
+        <br><br>
+        Spring constant k2: <input id="k2" type="text" name="k2" value="1">
+        <br><br>
+        Spring constant k3: <input id="k3" type="text" name="k3" value="1">
+        <br><br>
+        Mass m1: <input id="m1" type="text" name="m1" value="1">
+        <br><br>
+        Mass m2: <input id="m2" type="text" name="m2" value="1">
+        <br><br>
+        <div id="popout1">Feel free to try different values.  (NOTE: There is a small time delay after submitting.)</div>
+        <input id="stop" type="button" name="reset" value="Reset">
+        <div id="warning">*Always "Reset" before entering new parameters/restarting.</div>
+    </div>
+    <input id="start" type="button" name="submit" value="Submit"> 
+</form>
+
+<canvas id="canvasOne">Browser does not support canvas.</canvas>
+
+</body>
+</html>
