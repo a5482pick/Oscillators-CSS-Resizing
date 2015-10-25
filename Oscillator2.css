@@ -20,13 +20,14 @@ input[type=text]  {
 }
 
 #p1  {
-   position : absolute;
+   position : absolute;   /*This paragraph removes on window resize.*/
    top : 31em;
    left : 5%;
    width : 90%;
    font-size : 0.9em;
    text-align : justify;
    overflow : auto;
+   margin-bottom : 3em;
 }
 
 #p2  {
