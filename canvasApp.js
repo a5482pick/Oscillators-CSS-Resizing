@@ -12,7 +12,7 @@ function canvasApp ()  {
     theCanvas = document.getElementById("canvasOne");
     
     theCanvas.width = window.innerWidth * ratioWidth;
-    theCanvas.height = window.innerHeight * ratioHeight;
+    theCanvas.height =  60;
     context = theCanvas.getContext("2d");
    
    
@@ -48,7 +48,7 @@ function canvasApp ()  {
         drawScreen();
         
         //Set the incremented time for each successive redraw.
-        t=t+0.03;
+        t=t+0.025;
     }  
    
     //The entry point for the looping.
