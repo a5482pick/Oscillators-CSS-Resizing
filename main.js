@@ -17,6 +17,21 @@ window.addEventListener("load",begin,false);
 //This function is called when either button is pressed.
 function begin () {
      
+    //Choose the appropriate stylesheet for the given window dimensions.
+    if (window.innerWidth < 670)  {
+    
+        //The canvas repositions itself to the bottom of the screen.
+        document.getElementById('bigScreen').disabled  = true;
+        document.getElementById('smallScreen').disabled = false;
+    }
+    
+    else  {
+    
+        //Allow the canvas to resize and fill more of the screen.
+        document.getElementById('bigScreen').disabled  = false;
+        document.getElementById('smallScreen').disabled = true;
+    }       
+     
      
     document.getElementById("start").addEventListener("click", canvasApp, false);
     document.getElementById("stop").addEventListener("click",reset,false);
