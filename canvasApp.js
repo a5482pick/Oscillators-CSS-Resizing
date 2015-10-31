@@ -1,7 +1,11 @@
 "use strict";
 //canvasApp() is called when a request to make the animation run has been made.
 function canvasApp ()  {
-   
+    
+    
+    //To improve the page's appearance, remove 'focus' from the 'start' button when the button's pressed.
+    document.getElementById("start").blur();
+    
     //When canvasApp() is called, the user has asked the animation to run.  Remember this 'running' state in sessionStorage.
     sessionStorage.setItem("running","1");
    

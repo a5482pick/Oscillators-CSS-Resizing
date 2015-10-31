@@ -19,8 +19,14 @@ input[type=text]  {
    width : 7em;
 }
 
+button, input[type="button"] {       /*HTML page may use either 'input' or 'button' tags.*/
+   color: #FFF;
+   background-color: #900;
+   font-weight: bold;
+}
+
 #p1  {
-   position : absolute;   /*This paragraph removes on window resize.*/
+   position : absolute;   /*This paragraph moves on window resize.*/
    top : 31em;
    left : 5%;
    width : 90%;

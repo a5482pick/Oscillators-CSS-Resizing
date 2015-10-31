@@ -20,7 +20,13 @@ input[type=text]  {
    width : 7em;
 }
 
-#p1  {
+button, input[type="button"] {     /*HTML page may use either 'input' or 'button' tags.*/
+   color: #FFF;
+   background-color: #900;
+   font-weight: bold;
+}
+
+#p1  {             /*This paragraph moves on window resize.*/
    position : absolute;
    top : 7em;
    left : 55%;
