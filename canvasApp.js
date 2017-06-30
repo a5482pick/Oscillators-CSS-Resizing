@@ -11,8 +11,8 @@ function canvasApp ()  {
    
    
     //Set up the dimensions of the canvas that will hold the animation.
-    ratioWidth = 0.89;
-    ratioHeight = 0.1;
+    ratioWidth = 0.79;
+    ratioHeight = 0.075;
     theCanvas = document.getElementById("canvasOne");
     
     theCanvas.width = window.innerWidth * ratioWidth;
