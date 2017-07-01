@@ -14,7 +14,7 @@ window.addEventListener("resize",again,false);
 window.addEventListener("load",begin,false);
 
 
-//This function is called when either button is pressed.
+//This function is called when either the window loads or when location.reload() is applied.
 function begin () {
      
     //Choose the appropriate stylesheet for the given window dimensions.
@@ -36,8 +36,8 @@ function begin () {
     document.getElementById("start").addEventListener("click", canvasApp, false);
     document.getElementById("stop").addEventListener("click",reset,false);
    
-    //This loop is used when 'begin()' is called as a response to a 'resize' event.  When resizing, sessionStorage item "running" is already set to 1.
-    //Local storage remembers the previous parameters, so we commence with the original values immediately set.
+    //This loop is used when 'begin()' is called as a response to a 'resize' event when the animation is running.
+    //Local storage remembers the previous parameters, so we commence animation with the original values immediately set.
     if (sessionStorage.getItem("resized") =="1" && sessionStorage.getItem("running") == "1") {
     
         document.getElementById("k1").value = sessionStorage.getItem("k1");
@@ -60,6 +60,9 @@ function again () {
     sessionStorage.setItem("k3", document.getElementById("k3").value);
     sessionStorage.setItem("m1", document.getElementById("m1").value);
     sessionStorage.setItem("m2", document.getElementById("m2").value);
+
+    //(Firefox needs this to ensure automatic resizing when reloading.)
+    window.location.href = window.location.href;
   
     location.reload();
 }
@@ -69,7 +72,7 @@ function reset () {
    
     location.reload();
    
-    //Set the last known state to 'not running'.  This is required for keeping 'reset' distinct from 'resize'.
+    //Set the last known state to 'not running'. 
     sessionStorage.setItem("running","0");
 }
 
