@@ -2,13 +2,15 @@
 
 //In drawScreen(..) we draw the position of the masses at a particular moment in time.  This script is called from canvasApp.js.
 
-//In order, the parameters expected are: the canvas's context, width and height, the current time, an initial amplitude, the radius
-//of the left mass and the radius of the right mass.  The output is to the screen and nothing is returned to canvasApp.js.
+//In order, the parameters expected are: (1) The canvas's context (2) The canvas's width (3) The canvas's height
+//(4) An 'eigen object' of the form returned by eigenstate.js (5) The current time (6) An initial amplitude (7) The radius
+//of the left mass (8) The radius of the right mass. 
+//The output is to the screen and nothing is returned to canvasApp.js.
                    
 function drawScreen(context, width, height, eigen, t, a, radiusM1, radiusM2)  {
         
 
-    var omega1, omega2, eigen1, eigen2, x1, x2, x1Draw, x2Draw, dist, yCoord, param, xPos, yPos, imgData, i;
+    var omega1, omega2, eigen1, eigen2, x1, x2, x1Draw, x2Draw, dist, yCoord, param, xPos, yPos, imgData;
 
 
     //Extract the values from the array for clarity.
@@ -34,91 +36,88 @@ function drawScreen(context, width, height, eigen, t, a, radiusM1, radiusM2)  {
     x1Draw = x1*0.13636*width + 0.25*width;
     x2Draw = x2*0.13636*width + 0.75*width;
       
-      
-    //Draw the spring corresponding to k1.
-    dist = 0;
-      
-    while (dist < x1Draw)  {
-      
-        param = (2*Math.PI*20)/x1Draw;    
+     
+ 
+    //Parameter for the sine wave that generates the spring corresponding to k1. 
+    param = (2*Math.PI*20)/x1Draw; 
 
+    //Draw the pixels for the spring corresponding to k1.
+    dist = 0;    
+
+    while (dist < x1Draw)  {
+       
         //(k1) spring's 'y' canvas coordinate.  
-        yCoord = (height/2)+0.1*height*Math.sin(param * dist);         
-                     
-        dist = dist + 1;
+        yCoord = (height/2)+0.1*height*Math.sin(param * dist);  
+
+        //Instantiate an ImageData object of one pixel.
+        imgData = context.createImageData(1, 1);       
          
-        imgData = context.createImageData(1, 1);
-        for (i = 0; i < imgData.data.length; i += 4) {
-         
-            imgData.data[i+0] = 255;
-            imgData.data[i+1] = 0;
-            imgData.data[i+2] = 0;
-            imgData.data[i+3] = 255;
-        }
+        setPixelData(imgData);
              
         xPos = dist;
-        yPos = yCoord;
- 
-        context.putImageData(imgData, xPos, yPos);     
-    }
-      
-      
-    //Draw the yCoord corresponding to k2.
-    dist = 0; 
-      
-    while (dist < (x2Draw+radiusM2)-(x1Draw+radiusM1))  {
-      
-        param = (2*Math.PI*40)/((x2Draw-radiusM2)-(x1Draw+radiusM1));  
 
-        //(k2) spring's 'y' canvas coordinate.      
-        yCoord = (height/2)+0.1*height*Math.sin(param * dist);         
-                     
-        dist = dist + 1;
-        
-        imgData = context.createImageData(1, 1);
-           
-        for (i = 0; i < imgData.data.length; i += 4) {
-         
-            imgData.data[i+0] = 255;
-            imgData.data[i+1] = 0;
-            imgData.data[i+2] = 0;
-            imgData.data[i+3] = 255;
-        } 
-        xPos = dist+x1Draw + radiusM1;
         yPos = yCoord;
  
-        context.putImageData(imgData, xPos, yPos);  
+        context.putImageData(imgData, xPos, yPos);   
+
+        dist = dist + 1;  
+    }
+  
+
+    
+    //Parameter for the sine wave that generates the spring corresponding to k2.
+    param = (2*Math.PI*40)/((x2Draw-radiusM2)-(x1Draw+radiusM1));
+
+    //Draw the pixels for the spring corresponding to k2.
+    dist = 0;    
+
+    while (dist < (x2Draw+radiusM2)-(x1Draw+radiusM1))  {
+        
+        //(k2) spring's 'y' canvas coordinate.      
+        yCoord = (height/2)+0.1*height*Math.sin(param * dist);   
+
+        //Instantiate an ImageData object of one pixel.
+        imgData = context.createImageData(1, 1);      
+        
+        setPixelData(imgData);       
+ 
+        xPos = dist+x1Draw + radiusM1;
+
+        yPos = yCoord;
+ 
+        context.putImageData(imgData, xPos, yPos); 
+
+        dist = dist + 1; 
     }    
       
-      
-    //Draw the yCoord corresponding to k3.
+     
+ 
+    //Parameter for the sine wave that generates the spring corresponding to k3.
+    param = (2*Math.PI*20)/(width - (x2Draw+radiusM2)); 
+
+    //Draw the pixels for the spring corresponding to k3.
     dist = 0;
       
-    while (dist < width - (x2Draw+radiusM2))  {
-      
-        param = (2*Math.PI*20)/(width - (x2Draw+radiusM2));   
+    while (dist < width - (x2Draw+radiusM2))  {       
 
         //(k3) spring's 'y' canvas coordinate.     
-        yCoord = (height/2)+0.1*height*Math.sin(param * dist);         
-                     
-        dist = dist + 1;
+        yCoord = (height/2)+0.1*height*Math.sin(param * dist); 
+
+        //Instantiate an ImageData object of one pixel.
+        imgData = context.createImageData(1, 1);        
          
-        imgData = context.createImageData(1, 1);
-         
-        for (i = 0; i < imgData.data.length; i += 4) {
-         
-            imgData.data[i+0] = 255;
-            imgData.data[i+1] = 0;
-            imgData.data[i+2] = 0;
-            imgData.data[i+3] = 255;
-        }
+        setPixelData(imgData);
+
         xPos = dist+x2Draw + radiusM2;
+
         yPos = yCoord;
  
         context.putImageData(imgData, xPos, yPos);
+
+        dist = dist + 1;
     }
-      
-      
+
+    
     //Draw mass 1.
     context.beginPath();
     context.arc(x1Draw,height/2,radiusM1,0,2*Math.PI);
@@ -141,3 +140,6 @@ function drawScreen(context, width, height, eigen, t, a, radiusM1, radiusM2)  {
     context.fillStyle = "#FFFFFF";
     context.fillText("2",x2Draw-6,(height/2)+6);
 }
+
+
+
