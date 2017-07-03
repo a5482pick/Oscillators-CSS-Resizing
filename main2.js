@@ -1,28 +1,25 @@
-//This script makes the necessary responses to user actions.  It is therefore also the entry point.
+//This script listens for user actions such as clicked buttons and resizing of windows.
 
 "use strict";
 
-//Variables are declared global.  (This allows functions to be placed in different files.)
-var t, k1, k2, k3, m1, m2, x1, x2, eigen, eigen1, eigen2, omega1, omega2;
-var lamdaSQRT, initialDisp, a, i, imgData, realTime, ratioWidth, ratioHeight;
-var x1Draw, x2Draw, x1Origin, x2Origin, radiusM1, radiusM2, xPos, yPos;
-var k1Param, k1Spring, k1Dist, k2Param, k2Spring, k2Dist,k3Param, k3Spring, k3Dist, theCanvas, context, k1match, k2match, k3match, m1match, m2match;
-
 
 //Listening for both window 'loading' and window 'resizing'.
-window.addEventListener("resize",again,false);
+window.addEventListener("resize",resized,false);
 window.addEventListener("load",begin,false);
 
 
-//This function is called when either button is pressed.
+//This function is called when either the window loads or when location.reload() is applied due to resizing.
 function begin () {
      
      
+    //Listen for the 'start' button being clicked.
     document.getElementById("start").addEventListener("click", canvasApp, false);
+
+    //Listen for a request to stop i.e. 'reset' the animation.
     document.getElementById("stop").addEventListener("click",reset,false);
    
     //This loop is used when 'begin()' is called as a response to a 'resize' event when the animation is running.
-    //Local storage remembers the previous parameters, so we commence animation with the original values immediately set.
+    //Local storage remembers the previous parameters, so we can automatically commence animation with the original values.
     if (sessionStorage.getItem("resized") =="1" && sessionStorage.getItem("running") == "1") {
     
         document.getElementById("k1").value = sessionStorage.getItem("k1");
@@ -37,7 +34,7 @@ function begin () {
 }
 
 //This function is called when the window is resized.  We use sessionStorage to 'remember' that a resizing event, not a new session, has occured.
-function again () { 
+function resized () { 
    
     sessionStorage.setItem("resized","1");
     sessionStorage.setItem("k1", document.getElementById("k1").value);
@@ -57,7 +54,7 @@ function reset () {
    
     location.reload();
    
-    //Set the last known state to 'not running'.  This is required for keeping 'reset' distinct from 'resize'.
+    //Set the last known state to 'not running'.
     sessionStorage.setItem("running","0");
 }
 
