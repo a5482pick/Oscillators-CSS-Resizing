@@ -1,6 +1,6 @@
 "use strict";
 
-//createPixel() initialises the values of the pixel object.  Here, we call this script from within drawScreen.js.
+//setPixelData(..) initialises the values of the pixel object.  Here, we call this script from within drawScreen.js.
 //imgData is an instance of ImageData.
 
 function setPixelData(imgData)  {
